@@ -7,7 +7,7 @@ interface NoteProps{
     notes: {title: string; description: string} [];
 }
 
-//Se crea el componete funcional padre padre que recibe las props
+//Se crea el componete funcional padre que recibe las props
 const NoteContainer: React.FC<NoteProps>= ({ notes }) => {
 
     return (

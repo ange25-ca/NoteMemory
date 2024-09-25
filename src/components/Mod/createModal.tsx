@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 //Se crea una interfaz para la espera de los componentes de la nota
 interface NoteModalProps {
     //Permite saber si el modal está abierto
@@ -55,6 +54,7 @@ const NoteModal: React.FC<NoteModalProps> = ({ isModalOpen, closeModal }) => {
             )}
         </div>
     );
+
 };
 
 export default NoteModal;

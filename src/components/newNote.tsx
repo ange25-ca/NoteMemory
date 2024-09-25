@@ -1,3 +1,4 @@
+//Implementación del button para una NewNote
 
 //Creación del componente funcional para el botón de nueva nota
 import React from 'react';
