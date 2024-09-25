@@ -11,6 +11,8 @@ function App() {
             <div className='general-content'>
                 <Header />
             </div>
+            <div className='note-content'>
+            </div>
         </div>
     );
 }
