@@ -7,13 +7,10 @@ import NoteManager from './noteManager';
 //Creación del componente funcional para la barra
 // de visualización
 const Header = () => {
-    const { isModalOpen, notes, closeModal, addNote, handleOnDragEnd, } = NoteManager(); // Usa el NoteManage
+    const { isModalOpen, notes, closeModal, addNote, handleOnDragEnd } = NoteManager(); // Usa el NoteManage
     
     return (
         <>
-            <div className="panel-create">
-                <h4>My Notes</h4>
-            </div>
             <div>
                 <DragDropContext onDragEnd={handleOnDragEnd}>
                     <Droppable droppableId="notes">

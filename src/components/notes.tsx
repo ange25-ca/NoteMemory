@@ -34,24 +34,28 @@ const NoteContainer: React.FC<NoteProps>= ({ notes =[]}) => {
     };
 
     return (
-        <div className="note-container">
-            <div>
+        <div>
+            <div className='panel-create'>
+                <h2>My notes</h2>
                 <NewNoteButton openModal={openModal} />
-            </div>
-            <NoteModal 
-                isModalOpen={isModalOpen} 
-                closeModal={closeModal} 
-                addNote={addNote} 
-            />
-            <div className="note-content">
-                {/* Mapea sobre el arreglo de notas y renderiza el NoteContent */}
-                {noteList.map((note, index) => (
-                    <NoteContent
-                        key={index}
-                        title={note.title}
-                        description={note.description}
-                    />
-                ))}
+            </div>        
+            <div className="note-container">
+
+                <NoteModal
+                    isModalOpen={isModalOpen}
+                    closeModal={closeModal}
+                    addNote={addNote}
+                />
+                <div className="note-content">
+                    {/* Mapea sobre el arreglo de notas y renderiza el NoteContent */}
+                    {noteList.map((note, index) => (
+                        <NoteContent
+                            key={index}
+                            title={note.title}
+                            description={note.description}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
