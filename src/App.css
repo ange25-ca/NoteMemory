@@ -1,13 +1,42 @@
 #root {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 2 rem;
+    padding: 0;
     text-align: center;
-    font-family: "Poppins", sans-serif;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    --color-primary: #6096B4;  
+    --color-navbar: #6097b48e;
+    --color-secondary: #93BFCF;
+    --color-tertiary: #BDCDD6;
+    --color-background: #EEE9DA; 
+    --color-info: #FEFBE7;
+}
+
+.navbar {
+    background-color: var(--color-navbar);
+    margin: 0;
+    padding: 20px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 0px var(--color-primary);
+}
+
+.navbar h1 {
+    font-weight: bold;
+    margin-bottom: -20px;
+    color: #EEE9DA;
+}
+.navbar h2 {
+    margin-top: 1px;
+    font-weight: 400;
 }
 
 .app{
-    width: 500px;
+    margin-top: 5px;
+    width: 600px;
 }
 
 .panel-create {
@@ -15,10 +44,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
-}
-
-.title {
-    margin-bottom: 2px;
+    margin-top: 20px;
 }
 
 .general-content {
@@ -26,42 +52,65 @@
     max-width: 1200px;
 }
 
-/*Estilos del Modal para creación de notas*/
+
+/* Estilos del Modal para creación de notas */
 .modal {
     display: flex;
     flex-direction: column;
     position: fixed; 
     top: 50%; 
     left: 50%;
+    width: 400px;
     transform: translate(-50%, -50%); 
-    background: rgba(32, 32, 32, 0.95); 
-    padding: 20px;
-    border-radius: 8px;
-    z-index: 1000;
+    background-color: #748DA6;
+    border-radius: 50px;
+    z-index: 2000;
 }
 
-.modal-content{
+.info-modal {
+    background-color: #9CB4CC;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 0px;
+    padding: 22px;
     gap: 10px;
 }
 
-input, textarea {
-    width: 100%; 
-    padding: 10px;
-    border: 1px solid #cccccc88;
-    border-radius: 5px;
+.info-modal input, textarea {
+    background-color: #fefbe7b5;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 30px; 
+    border-radius: 2px;
 }
 
 textarea {
     resize: none; /* Deshabilita el redimensionamiento */
     height: 150px; 
+    font-family:"Noto Sans", sans-serif ;
 }
 
 .modal button {
-    background-color: #000000; 
+    background-color: var(--color-tertiary);
+    gap: 10px; 
+    margin-bottom: 2px;
     border-radius: 15px; 
-    padding: auto;
     cursor: pointer; 
+    outline: none;
     transition: background-color 0.3s; 
+}
+
+/* Overlay para aplicar el desenfoque al fondo */
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px); /* Aplica el desenfoque al fondo */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro semi-transparente */
+    z-index: 1000; /* Debe estar debajo del modal */
 }

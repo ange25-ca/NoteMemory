@@ -33,9 +33,11 @@ const NoteModal: React.FC<NoteModalProps> = ({ isModalOpen, closeModal, addNote 
         <div className='createModal'>
             {/* Se mostrara el modal si es true */}
             {isModalOpen && (
+                <div className='Overlay'>
                 <div className="modal">
                     <div className="modal-content">
                         <h2>Create New Note</h2>
+                        <div className='info-modal'>
                         <input
                             type="text"
                             placeholder="Title"
@@ -55,6 +57,8 @@ const NoteModal: React.FC<NoteModalProps> = ({ isModalOpen, closeModal, addNote 
                             {/* Botón para cerrar el modal */}
                             <button onClick={closeModal}>Close</button>
                         </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             )}
