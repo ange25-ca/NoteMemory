@@ -6,10 +6,12 @@ interface NoteModalProps {
     isModalOpen: boolean;
     //Función para cerrar el modal
     closeModal: () => void;
+
+    addNote : (title: string, description: string) => void ;
 }
 
 //Se crea el componente funciona para el modal
-const NoteModal: React.FC<NoteModalProps> = ({ isModalOpen, closeModal }) => {
+const NoteModal: React.FC<NoteModalProps> = ({ isModalOpen, closeModal, addNote }) => {
     //Se define de los estados locales 
         //Estado para el titulo de la nota
     const [title, setTitle] = useState(''); 
@@ -18,9 +20,13 @@ const NoteModal: React.FC<NoteModalProps> = ({ isModalOpen, closeModal }) => {
 
     // Función para manejar la creación de la nota
     const handleCreateNote = () => {
+        addNote(title, description);
         //Por mientras se muestra la nota en la consola
         console.log('Nota creada:', { title, description });
         closeModal(); // Cerrar el modal después de crear la nota
+        
+        setTitle('');
+        setDescription('');
     };
 
     return (

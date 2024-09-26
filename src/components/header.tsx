@@ -1,21 +1,39 @@
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import '../App.css';
-import NoteCoordinator from './Mod/modalCoordinator';
+import NoteModal from './Mod/createModal';
+import NoteContainer from './notes';
+import NoteManager from './noteManager';
 
 //Creación del componente funcional para la barra
 // de visualización
 const Header = () => {
+    const { isModalOpen, notes, closeModal, addNote, handleOnDragEnd, } = NoteManager(); // Usa el NoteManage
     
     return (
         <>
             <div className="panel-create">
                 <h4>My Notes</h4>
-                <NoteCoordinator />
             </div>
-            <div className='panel-notes'>
-                <h1>Las notas creadas aparecen aquí</h1>
+            <div>
+                <DragDropContext onDragEnd={handleOnDragEnd}>
+                    <Droppable droppableId="notes">
+                        {(provided) => (
+                            <div ref={provided.innerRef} {...provided.droppableProps}>
+                                <NoteContainer notes={notes} />
+                                {provided.placeholder} {/* Placeholder para el droppable */}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
             </div>
+
+            <NoteModal
+                isModalOpen={isModalOpen}
+                closeModal={closeModal}
+                addNote={addNote} // Pasar la función addNote
+            />
         </>
     );
-}
+};
 
 export default Header;

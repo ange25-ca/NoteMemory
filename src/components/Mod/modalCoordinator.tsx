@@ -1,24 +1,43 @@
 import { useState } from 'react';
 import NoteModal from './createModal';
 import NewNoteButton from '../newNote';
+import NoteContent from '../noteContent';
 
-const NoteCoordinator = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+// Definición de la interfaz para las props
+interface NoteCoordinatorProps {
+    notes: { title: string; description: string }[];
+    addNote: (title: string, description: string) => void;
+    closeModal: () => void;
+    isModalOpen: boolean;
+}
+
+const NoteCoordinator: React.FC<NoteCoordinatorProps> = ({ notes, addNote, closeModal, isModalOpen }) => {
+    const [isModalOpenState, setIsModalOpen] = useState(isModalOpen); // Estado local para el modal
 
     // Función para abrir el modal
     const openModal = () => setIsModalOpen(true);
 
-    // Función para cerrar el modal
-    const closeModal = () => setIsModalOpen(false);
-
     return (
         <div>
-            {/*Se pasa openModal al botón*/}
-            <NewNoteButton openModal={openModal} /> 
-            {/*Se pasa el isModalOpen y el CloseModal al MODAL*/}
-            <NoteModal isModalOpen={isModalOpen} closeModal={closeModal} />
+            <NewNoteButton openModal={openModal} />
+            <NoteModal 
+                isModalOpen={isModalOpenState} 
+                closeModal={closeModal} 
+                addNote={addNote} 
+            />
+            <div className="note-content">
+                {/* Mapea sobre el arreglo de notas y renderiza el NoteContent */}
+                {notes.map((note, index) => (
+                    <NoteContent
+                        key={index}
+                        title={note.title}
+                        description={note.description}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
 
 export default NoteCoordinator;
+
