@@ -31,8 +31,11 @@ const NoteCoordinator: React.FC<NoteCoordinatorProps> = ({ notes, addNote, close
                     <NoteContent
                         key={index}
                         title={note.title}
-                        description={note.description}
-                    />
+                        description={note.description} onDelete={function (): void {
+                            throw new Error('Function not implemented.');
+                        } } onEdit={function (): void {
+                            throw new Error('Function not implemented.');
+                        } }                    />
                 ))}
             </div>
         </div>

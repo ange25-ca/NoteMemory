@@ -13,9 +13,13 @@ const Header = () => {
         <>
             <div>
                 <DragDropContext onDragEnd={handleOnDragEnd}>
-                    <Droppable droppableId="notes">
+                    <Droppable droppableId="notes-droppable" direction="horizontal">
                         {(provided) => (
-                            <div ref={provided.innerRef} {...provided.droppableProps}>
+                            <div 
+                                ref={provided.innerRef} 
+                                {...provided.droppableProps}
+                                className='droppable-area'
+                                >
                                 <NoteContainer notes={notes} />
                                 {provided.placeholder} {/* Placeholder para el droppable */}
                             </div>
@@ -23,7 +27,6 @@ const Header = () => {
                     </Droppable>
                 </DragDropContext>
             </div>
-
             <NoteModal
                 isModalOpen={isModalOpen}
                 closeModal={closeModal}

@@ -36,7 +36,7 @@
 
 .app{
     margin-top: 5px;
-    width: 600px;
+    width: 900px;
 }
 
 .panel-create {
@@ -114,3 +114,56 @@ textarea {
     background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro semi-transparente */
     z-index: 1000; /* Debe estar debajo del modal */
 }
+
+
+/* Estilos del drag */
+.droppable-area {
+    border: solid;
+    margin-top: 10px;
+    min-height: 400px; /* Altura mínima */
+    min-width: 400px;
+}
+
+.note-container {
+    display: grid; /* Cambiar a grid */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 10px; /* Espaciado entre notas */
+}
+
+.note-item {
+    background-color: var(--color-primary);
+    padding: 15px;
+    width: 15rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+.note-item:hover {
+    background-color: #6096B4; /* Color al pasar el ratón */
+    cursor: move; /* Indicar que se puede mover */
+}
+
+.note-content h3 {
+    margin: 0 0 10px;
+}
+
+.note-content p {
+    margin: 0 0 10px;
+}
+
+.note-content button {
+    margin-right: 5px; /* Espaciado entre botones */
+    padding: 5px 10px;
+    background-color: #6096B4;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.note-content button:hover {
+    background-color: #4E7B93; 
+}
+
+
