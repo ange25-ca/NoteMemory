@@ -7,7 +7,12 @@ import chroma from "chroma-js";
 
 // Se crea la interfaz de las props para el componente padre
 interface NoteProps {
-  notes: { id: string; title: string; description: string; color:string }[]; // Ahora incluye 'id'
+  notes: {
+      id: string; 
+      title: string;
+      description: string; 
+      color:string
+      }[]; // Ahora incluye 'id'
 }
 
 // Se crea el componente funcional padre que recibe las props

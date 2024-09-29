@@ -4,10 +4,8 @@
   font-weight: 400;
   color: #000;
   background-color: var(--color-tertiary);
-  --color-primary: #6096B4;  
-  --color-secondary: #93BFCF;
-  --color-tertiary: #BDCDD6;
-  --color-background: #EEE9DA; 
+  --color-tertiary: #B0A695;
+ 
 }
 
 a {
@@ -22,12 +20,12 @@ body {
   min-height: 100vh;
 }
 
-button {
+/*button {
   border-radius: 50px;
   border: 2px solid transparent;
   font-size: 15px;
   font-weight: 600;
-  padding: 20px;
+  padding: 10px;
   font-family: "Noto Sans", sans-serif;
   background-color: var(--color-secondary);
   cursor: pointer;
@@ -36,5 +34,5 @@ button {
 
 button:hover {
   border-color: var(--color-primary);
-}
+}}*/
 

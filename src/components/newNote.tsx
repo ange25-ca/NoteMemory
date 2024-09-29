@@ -2,6 +2,8 @@
 
 //Creación del componente funcional para el botón de nueva nota
 import React from 'react';
+//importo la imagen
+import noteIcon from '../assets/add_notes_griss.png';
 
 //Se crea una interfaz para la el botón de crear nota
 interface NewNoteButtonProps {
@@ -12,7 +14,9 @@ interface NewNoteButtonProps {
 const NewNoteButton: React.FC<NewNoteButtonProps> = ({ openModal }) => {
     //Se cambia el estado del botón a true
     return (
-    <button onClick={openModal}>New note</button>
+    <button className='buttonAddnote' onClick={openModal}>
+        <img src={noteIcon} alt="New Note" style={{ width: '35px', height: '35px', marginRight:'10px',marginLeft: '3px', marginTop: '3px'}}></img>
+    </button>
 );
 };
 

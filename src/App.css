@@ -5,11 +5,11 @@
     text-align: center;
     font-family: "Noto Sans", sans-serif;
     font-weight: 400;
-    --color-primary: #6096B4;  
-    --color-navbar: #6097b48e;
+    --color-primary: #705C53;  
+    --color-navbar: #705c5399;
     --color-secondary: #93BFCF;
-    --color-tertiary: #BDCDD6;
-    --color-background: #EEE9DA; 
+    --color-tertiary: #B0A695;
+    --color-background: #EAE4DD;
     --color-info: #FEFBE7;
 }
 
@@ -21,7 +21,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 0px var(--color-primary);
+    box-shadow:
+    0 10px 0px var(--color-primary);
+    border: solid rgba(255, 255, 255, 0.502);
 }
 
 .navbar h1 {
@@ -44,7 +46,10 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 2px;
 }
 
 .general-content {
@@ -52,25 +57,27 @@
     max-width: 1200px;
 }
 
-
 /* Estilos del Modal para creación de notas */
 .modal {
     display: flex;
     flex-direction: column;
+    border:solid;
     position: fixed; 
     top: 50%; 
     left: 50%;
     width: 400px;
     transform: translate(-50%, -50%); 
-    background-color: #748DA6;
+    color: #FEFBE7;
+    background-color: var(--color-tertiary);
     border-radius: 50px;
     z-index: 2000;
 }
 
 .info-modal {
-    background-color: #9CB4CC;
+    background-color: var(--color-primary);
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    border: solid;
     display: flex;
     flex-direction: column;
     margin-bottom: 0px;
@@ -116,6 +123,25 @@ textarea {
 }
 
 
+/*Estilos para el botones*/
+.buttonAddnote{
+    border-bottom-left-radius: 45px;
+    border-top-left-radius: 45px;
+    border: none;
+    background-color: var(--color-navbar);
+    cursor: pointer;
+    transition: transform 0.01s ease-in-out;
+}
+
+.buttonAddnote:hover {
+    background-color: var(--color-tertiary);
+}
+
+.buttonAddnote:active{
+    transform: scale(0.9);
+    background-color: none;
+}
+
 /* Estilos del drag */
 .droppable-area {
     border: solid;
@@ -154,16 +180,12 @@ textarea {
 
 .note-content button {
     margin-right: 5px; /* Espaciado entre botones */
-    padding: 5px 10px;
+    padding: 5px 1px;
     background-color: #6096B4;
     color: white;
-    border: none;
     border-radius: 3px;
     cursor: pointer;
 }
 
-.note-content button:hover {
-    background-color: #4E7B93; 
-}
 
 
