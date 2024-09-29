@@ -3,6 +3,7 @@ import NoteContent from "./noteContent";
 import NoteModal from "./Mod/createModal";
 import NewNoteButton from "./newNote";
 import { Draggable } from "react-beautiful-dnd";
+import chroma from "chroma-js";
 
 // Se crea la interfaz de las props para el componente padre
 interface NoteProps {
@@ -34,12 +35,9 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
   };
 
   const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+    // Genera un color aleatorio pastel utilizando chroma.js
+    const randomColor = chroma.random().set('hsl.s', 0.3).set('hsl.l', 0.8).hex();
+    return randomColor;
   };
 
   // Función para agregar una nueva nota o editar una existente
