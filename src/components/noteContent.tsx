@@ -10,21 +10,23 @@ interface NoteContentProps {
     onDelete: ()=> void;
     //función para editar
     onEdit: () => void;
-
+    //cambia el color
+    color:string;
 }
 
 //Se crea el componente funcional que recibe props de las notas
-const NoteContent: React.FC<NoteContentProps> = ({title, description, onDelete, onEdit}) => {
-    return (
-        <div className="notecontent">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <div className="note-actions">
-          <button onClick={onEdit}>Editar</button>
-          <button onClick={onDelete}>Eliminar</button>
-        </div>
+const NoteContent: React.FC<NoteContentProps> = ({ title, description, onDelete, onEdit, color }) => {
+  return (
+      <div className="notecontent" style={{ backgroundColor: color }}> {/* Añade el color aquí */}
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <div className="note-actions">
+              <button onClick={onEdit}>Editar</button>
+              <button onClick={onDelete}>Eliminar</button>
+          </div>
       </div>
-    );
+  );
 }
+
 
 export default NoteContent;

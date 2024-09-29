@@ -6,12 +6,12 @@ import { Draggable } from "react-beautiful-dnd";
 
 // Se crea la interfaz de las props para el componente padre
 interface NoteProps {
-  notes: { id: string; title: string; description: string }[]; // Ahora incluye 'id'
+  notes: { id: string; title: string; description: string; color:string }[]; // Ahora incluye 'id'
 }
 
 // Se crea el componente funcional padre que recibe las props
 const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
-  const [noteList, setNoteList] = useState<{ id: string; title: string; description: string }[]>(notes);
+  const [noteList, setNoteList] = useState<{ id: string; title: string; description: string; color:string }[]>(notes);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentEditIndex, setCurrentEditIndex] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState<string>(""); 
@@ -33,11 +33,25 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
     setIsModalOpen(false);
   };
 
+  const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   // Función para agregar una nueva nota o editar una existente
   const addNote = (title: string, description: string) => {
     if (currentEditIndex === null) {
       // Crear una nueva nota con un id único
-      const newNote = { id: Date.now().toString(), title, description };
+      const newNote = { 
+        id: Date.now().toString(),
+        title, 
+        description,
+        color: getRandomColor(), // Asegúrate de incluir el color aquí
+      };
       setNoteList((prevNotes) => [...prevNotes, newNote]);
     } else {
       // Actualizar una nota existente
@@ -85,12 +99,14 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
                   className="note-item"
+                  style={{ backgroundColor: note.color }}
                 >
                   <NoteContent
                     title={note.title}
                     description={note.description}
                     onDelete={() => deleteNote(index)}
-                    onEdit={() => editNote(index)}
+                    onEdit={() => editNote(index)} 
+                    color={note.color}                    
                   />
                 </div>
               )}

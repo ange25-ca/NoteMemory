@@ -131,7 +131,7 @@ textarea {
 }
 
 .note-item {
-    background-color: var(--color-primary);
+    /*background-color: var(--color-primary);*/
     padding: 15px;
     width: 15rem;
     border-radius: 5px;
@@ -140,7 +140,7 @@ textarea {
 }
 
 .note-item:hover {
-    background-color: #6096B4; /* Color al pasar el ratón */
+    /*background-color: #6096B4; /* Color al pasar el ratón */
     cursor: move; /* Indicar que se puede mover */
 }
 
