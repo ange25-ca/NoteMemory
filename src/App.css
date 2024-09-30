@@ -12,6 +12,7 @@
     --color-secondary: #93BFCF;
     --color-tertiary: #B0A695;
     --color-forth: #585144;
+    --color-fifth: #7c5f4a;
 }
 
 .navbar {
@@ -197,6 +198,19 @@ textarea {
     background-color: none;
 }
 
+.buttonexpandir{
+    background-color: var(--color-fifth);
+    border: solid;
+    border-color: transparent;
+    box-shadow: 0 2px 5px #705C53;
+
+}
+
+.buttonexpandir:active{
+    transform: scale(0.9);
+    background-color: none;
+}
+
 /* Estilos del drag */
 .droppable-area {
     border: solid;
@@ -218,6 +232,18 @@ textarea {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s;
+    font-size: 12px;
+    line-height: 1.4;
+    max-height: 90px; /* Limitar la altura del texto */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Limitar a 4 líneas */
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+.note-item p{
+    min-height: none;
 }
 
 .note-item:hover {
@@ -256,7 +282,7 @@ textarea {
     z-index: 2000;
   }
   
-  .modal-content-confirm {
+.modal-content-confirm {
     background: var(--color-forth);
     padding: 20px;
     border-radius: 50px;
@@ -267,8 +293,45 @@ textarea {
     border-color:#eae4ddb2;
 }
   
-  .modal-actions-confirm button {
+.modal-actions-confirm button {
     margin: 0 5px;
+}
+
+/*Estilos para el modal que muestra toda la informacion de note*/
+.modal-info-notes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Oculta el desbordamiento */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
   }
+  
+.modal-content-info-notes {
+    background-color: var(--color-fifth);
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+  }
+  
+.modal-content-info-notes h2 {
+    margin-top: 0;
+  }
+  
+.modal-content-info-notes p {
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    max-height: 300px; /* Ajusta la altura máxima del contenido desplazable */
+    padding-right: 10px; /* Añade espacio para evitar superposición del scroll */
+    margin-bottom: 20px;
+  }
+  
+
   
 

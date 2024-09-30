@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import iconEdit from '../assets/edit_note.png';
 import iconDelete from '../assets/delete_note.png';
 import ConfirmModal from "./Mod/confirmModal";
+import NoteDetailModal from "./Mod/noteDatilsModel";
 
 //Se crea la interfaz de las props definir el tipo de dato que se espera
 interface NoteContentProps {
@@ -23,6 +24,7 @@ interface NoteContentProps {
 const NoteContent: React.FC<NoteContentProps> = ({ title, description, onDelete, onEdit, color }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [actionType, setActionType] = useState<'edit' | 'delete' | null>(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false); // Estado para el modal de detalles
 
   //La funcion puede tomar un valor edit o delete
   const handleOpenModal = (type: 'edit' | 'delete') => {
@@ -47,6 +49,15 @@ const NoteContent: React.FC<NoteContentProps> = ({ title, description, onDelete,
     setIsModalOpen(false); // Solo cierra el modal
     setActionType(null); // Reinicia el tipo de acción
   };
+
+  // Función para abrir el modal de detalles
+  const handleOpenDetailModal = () => {
+    setIsDetailModalOpen(true);
+  };
+
+  const handleCloseDetailModal = () => {
+    setIsDetailModalOpen(false);
+  };
   
   return (
     <div className="notecontent" style={{ backgroundColor: color }}>
@@ -66,9 +77,11 @@ const NoteContent: React.FC<NoteContentProps> = ({ title, description, onDelete,
                   />
             </button>
         </div>
+        {/* Contenido de la nota que abre el modal de detalles al hacer clic */}
+      <div onClick={handleOpenDetailModal} style={{ cursor: 'pointer' }}>
         <h3>{title}</h3>
         <p>{description}</p>
-
+      </div>
         {/* Modal de Confirmación */}
         <ConfirmModal
             isOpen={isModalOpen}
@@ -78,6 +91,13 @@ const NoteContent: React.FC<NoteContentProps> = ({ title, description, onDelete,
               "¿Estás seguro de que quieres eliminar esta nota?" : 
               "¿Estás seguro de que quieres editar esta nota?"}
         />
+        {/* Modal de Detalles de la Nota */}
+      <NoteDetailModal
+        title={title}
+        description={description}
+        isOpen={isDetailModalOpen}
+        onClose={handleCloseDetailModal}
+      />
     </div>
 );
 }
