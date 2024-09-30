@@ -3,6 +3,7 @@ import NoteContent from "./noteContent";
 import NoteModal from "./Mod/createModal";
 import NewNoteButton from "./newNote";
 import chroma from "chroma-js";
+import ConfirmModal from "./Mod/confirmModal";
 
 // Se crea la interfaz de las props para el componente padre
 interface NoteProps {
@@ -11,29 +12,43 @@ interface NoteProps {
     title: string;
     description: string; 
     color: string;
-  }[]; // Ahora incluye 'id'
+  }[];
 }
-
 // Se crea el componente funcional padre que recibe las props
 const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
   const [noteList, setNoteList] = useState<{ id: string; title: string; description: string; color: string }[]>(notes);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false); // Estado para el modal de confirmación
   const [currentEditIndex, setCurrentEditIndex] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState<string>(""); 
   const [editDescription, setEditDescription] = useState<string>(""); 
   
-  // Función para abrir el modal
+  // Función para abrir el modal de confirmación
+  const openConfirmModal = () => {
+    setIsConfirmOpen(true);
+  };
+
+  // Función para confirmar y abrir el modal de creación de notas
+  const confirmAndOpenModal = () => {
+    setIsConfirmOpen(false);
+    openModal(true); // Abrir el modal de creación de notas
+  };
+
+  // Función para cerrar el modal de confirmación
+  const closeConfirmModal = () => {
+    setIsConfirmOpen(false);
+  };
+
   const openModal = (isNewNote: boolean = false) => {
     if (isNewNote) {
       // Limpiar los valores si se va a crear una nueva nota
       setEditTitle("");
       setEditDescription("");
-      setCurrentEditIndex(null); // Resetear índice de edición
+      setCurrentEditIndex(null); //Resetea índice de edición
     }
     setIsModalOpen(true);
   };
-  
-  // Función para cerrar el modal
+    // Función para cerrar el modal
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -52,7 +67,7 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
         id: Date.now().toString(),
         title, 
         description,
-        color: getRandomColor(), // Asegúrate de incluir el color aquí
+        color: getRandomColor(),
       };
       setNoteList((prevNotes) => [...prevNotes, newNote]);
     } else {
@@ -61,7 +76,7 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
       updatedNotes[currentEditIndex] = { ...updatedNotes[currentEditIndex], title, description };
       setNoteList(updatedNotes);
     }
-    closeModal(); // Cerrar el modal después de crear/editar la nota
+    closeModal();
   };
 
   const deleteNote = (index: number) => {
@@ -73,17 +88,24 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
     setEditTitle(noteToEdit.title);
     setEditDescription(noteToEdit.description);
     setCurrentEditIndex(index);
-    openModal(); // Abrir modal para editar
+    openModal();
   };
 
   return (
     <div>
       <div className="panel-create">
         <h2>My notes</h2>
-        {/* Pasar true para indicar que se va a crear una nueva nota */}
-        <NewNoteButton openModal={() => openModal(true)} />
+        {/* Abrir el modal de confirmación antes de crear una nueva nota */}
+        <NewNoteButton openModal={openConfirmModal} />
       </div>
       <div className="note-container">
+        {/* Modal de confirmación */}
+        <ConfirmModal
+          isOpen={isConfirmOpen}
+          onConfirm={confirmAndOpenModal}
+          onCancel={closeConfirmModal} 
+          message={"¿Está seguro que quiere crear una nota? "}        />
+        {/* Modal para crear o editar una nota */}
         <NoteModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
@@ -103,7 +125,7 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
                 title={note.title}
                 description={note.description}
                 onDelete={() => deleteNote(index)}
-                onEdit={() => editNote(index)} 
+                onEdit={() => editNote(index)}
                 color={note.color}                    
               />
             </div>
@@ -115,3 +137,4 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
 };
 
 export default NoteContainer;
+

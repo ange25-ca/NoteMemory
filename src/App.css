@@ -5,12 +5,13 @@
     text-align: center;
     font-family: "Noto Sans", sans-serif;
     font-weight: 400;
-    --color-primary: #705C53;  
     --color-navbar: #705c5399;
-    --color-secondary: #93BFCF;
-    --color-tertiary: #B0A695;
     --color-background: #EAE4DD;
     --color-info: #FEFBE7;
+    --color-primary: #705C53;  
+    --color-secondary: #93BFCF;
+    --color-tertiary: #B0A695;
+    --color-forth: #585144;
 }
 
 .navbar {
@@ -179,6 +180,23 @@ textarea {
     margin-top: -2rem;
 }
 
+.buttonConfirm{
+    background-color: var(--color-forth);
+    border: solid;
+    color:#fefbe796;
+    font-family:"Noto Sans", sans-serif;
+    text-align: center;
+    border: solid;
+    border-color:#eae4ddb2;
+    border-radius: 15px;
+    border-bottom: 5px;
+}
+
+.buttonConfirm:active{
+    transform: scale(0.9);
+    background-color: none;
+}
+
 /* Estilos del drag */
 .droppable-area {
     border: solid;
@@ -224,5 +242,33 @@ textarea {
     cursor: pointer;
 }
 
-
+/*Estilos para el modal de confirmacion*/
+.modal-overlay-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+  
+  .modal-content-confirm {
+    background: var(--color-forth);
+    padding: 20px;
+    border-radius: 50px;
+    color:#fefbe796;
+    font-family:"Noto Sans", sans-serif;
+    text-align: center;
+    border: solid;
+    border-color:#eae4ddb2;
+}
+  
+  .modal-actions-confirm button {
+    margin: 0 5px;
+  }
+  
 
