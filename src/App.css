@@ -101,7 +101,6 @@ textarea {
 }
 
 .modal button {
-    background-color: var(--color-tertiary);
     gap: 10px; 
     margin-bottom: 2px;
     border-radius: 15px; 
@@ -140,6 +139,44 @@ textarea {
 .buttonAddnote:active{
     transform: scale(0.9);
     background-color: none;
+}
+
+/*Estilos para los botones*/
+.buttonedit{
+    border: none;
+    background-color: var(--color-primary);
+}
+.buttonedit:active{
+    transform: scale(0.9);
+    background-color: none;
+}
+
+.notecontent {
+  position: relative; /* Necesario para el posicionamiento absoluto de los botones */
+  padding: 10px; /* Espaciado interno */
+  margin: 10px; /* Espaciado entre notas */
+  cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
+}
+
+.note-actions {
+  position: absolute; /* Posicionar absolutamente respecto al contenedor de la nota */
+  top: 10px; /* Ajusta según sea necesario */
+  right: 10rem;
+  display: none; /* Ocultar por defecto */
+  
+}
+
+.notecontent:hover .note-actions {
+  display: flex; /* Mostrar al pasar el mouse */
+}
+
+.buttonActions{
+    background-color: #5e5d5c60;
+    border: none;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 20px ;
+    border-bottom-right-radius: 20px;
+    margin-top: -2rem;
 }
 
 /* Estilos del drag */

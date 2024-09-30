@@ -1,31 +1,16 @@
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import '../App.css';
 import NoteModal from './Mod/createModal';
 import NoteContainer from './notes';
 import NoteManager from './noteManager';
 
-//Creación del componente funcional para la barra
-// de visualización
+// Creación del componente funcional para la barra de visualización
 const Header = () => {
-    const { isModalOpen, notes, closeModal, addNote, handleOnDragEnd } = NoteManager(); // Usa el NoteManage
+    const { isModalOpen, notes, closeModal, addNote } = NoteManager(); // Usa el NoteManager sin drag and drop
     
     return (
         <>
             <div>
-                <DragDropContext onDragEnd={handleOnDragEnd}>
-                    <Droppable droppableId="notes-droppable" direction="horizontal">
-                        {(provided) => (
-                            <div 
-                                ref={provided.innerRef} 
-                                {...provided.droppableProps}
-                                className='droppable-area'
-                                >
-                                <NoteContainer notes={notes} />
-                                {provided.placeholder} {/* Placeholder para el droppable */}
-                            </div>
-                        )}
-                    </Droppable>
-                </DragDropContext>
+                <NoteContainer notes={notes} /> {/* Renderiza el contenedor de notas sin DragDropContext */}
             </div>
             <NoteModal
                 isModalOpen={isModalOpen}

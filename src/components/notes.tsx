@@ -2,22 +2,21 @@ import React, { useState } from "react";
 import NoteContent from "./noteContent";
 import NoteModal from "./Mod/createModal";
 import NewNoteButton from "./newNote";
-import { Draggable } from "react-beautiful-dnd";
 import chroma from "chroma-js";
 
 // Se crea la interfaz de las props para el componente padre
 interface NoteProps {
   notes: {
-      id: string; 
-      title: string;
-      description: string; 
-      color:string
-      }[]; // Ahora incluye 'id'
+    id: string; 
+    title: string;
+    description: string; 
+    color: string;
+  }[]; // Ahora incluye 'id'
 }
 
 // Se crea el componente funcional padre que recibe las props
 const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
-  const [noteList, setNoteList] = useState<{ id: string; title: string; description: string; color:string }[]>(notes);
+  const [noteList, setNoteList] = useState<{ id: string; title: string; description: string; color: string }[]>(notes);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentEditIndex, setCurrentEditIndex] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState<string>(""); 
@@ -95,25 +94,19 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
         <div className="note-container">
           {/* Mapea sobre el arreglo de notas y renderiza el NoteContent */}
           {noteList.map((note, index) => (
-            <Draggable key={note.id} draggableId={note.id} index={index}>
-              {(provided) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  className="note-item"
-                  style={{ backgroundColor: note.color }}
-                >
-                  <NoteContent
-                    title={note.title}
-                    description={note.description}
-                    onDelete={() => deleteNote(index)}
-                    onEdit={() => editNote(index)} 
-                    color={note.color}                    
-                  />
-                </div>
-              )}
-            </Draggable>
+            <div
+              key={note.id}
+              className="note-item"
+              style={{ backgroundColor: note.color }}
+            >
+              <NoteContent
+                title={note.title}
+                description={note.description}
+                onDelete={() => deleteNote(index)}
+                onEdit={() => editNote(index)} 
+                color={note.color}                    
+              />
+            </div>
           ))}
         </div>
       </div>

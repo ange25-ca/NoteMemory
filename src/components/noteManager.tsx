@@ -29,23 +29,7 @@ const NoteManager = () => {
         closeModal();
     };
 
-    const handleOnDragEnd = (result: any) => {
-        const { destination, source } = result;
-    
-        // Si no hay destino o no se movió la nota, salir
-        if (!destination || destination.index === source.index) {
-            return;
-        }
-    
-        // Crea una copia del arreglo de notas
-        const updatedNotes = Array.from(notes);
-        const [movedNote] = updatedNotes.splice(source.index, 1); // Remueve la nota
-        updatedNotes.splice(destination.index, 0, movedNote); // Inserta en la nueva posición
-    
-        setNotes(updatedNotes); // Actualiza el estado
-    };
-
-    return { isModalOpen, notes, openModal, closeModal, addNote, handleOnDragEnd };
+    return { isModalOpen, notes, openModal, closeModal, addNote};
 };
 
 export default NoteManager;

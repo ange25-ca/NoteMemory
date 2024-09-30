@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import iconSave from '../../assets/save_note.png';
+import iconCancel from '../../assets/cancel_note.png'
 
 interface NoteModalProps {
   isModalOpen: boolean;
@@ -61,11 +63,21 @@ const NoteModal: React.FC<NoteModalProps> =
                 />
                 <div className='modal-button'>
                   {/* Botón para crear la nota */}
-                  <button onClick={handleCreateNote}>
-                    {currentTitle ? "Update Note" : "Create Note"}
+                  <button className="buttonedit" onClick={handleCreateNote}>
+                    <img 
+                      src= {iconSave}
+                      alt="icono de crear nota"
+                      style={{ width: '35px', height: '35px'}} 
+                    />
                   </button>
                   {/*Botón para cerrar el modal */}
-                  <button onClick={closeModal}>Close</button>
+                  <button className="buttonedit" onClick={closeModal}>
+                    <img
+                      src={iconCancel}
+                      alt="icono de cancelar la nota"
+                      style={{ width: '35px', height: '35px' }} 
+                    />
+                  </button>
                 </div>
               </div>
             </div>
