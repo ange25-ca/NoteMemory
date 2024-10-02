@@ -5,11 +5,10 @@
     text-align: center;
     font-family: "Noto Sans", sans-serif;
     font-weight: 400;
-    --color-navbar: #705c5399;
+    --color-navbar: #aea39e99;
     --color-background: #EAE4DD;
     --color-info: #FEFBE7;
-    --color-primary: #705C53;  
-    --color-secondary: #93BFCF;
+    --color-primary: #705C53; 
     --color-tertiary: #B0A695;
     --color-forth: #585144;
     --color-fifth: #7c5f4a;
@@ -154,16 +153,20 @@ textarea {
 }
 
 .notecontent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border-radius: 5px;
+  height: 10rem;
   position: relative; /* Necesario para el posicionamiento absoluto de los botones */
   padding: 10px; /* Espaciado interno */
-  margin: 10px; /* Espaciado entre notas */
   cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
 }
 
 .note-actions {
   position: absolute; /* Posicionar absolutamente respecto al contenedor de la nota */
   top: 10px; /* Ajusta según sea necesario */
-  right: 10rem;
+  margin-left: 10rem;
   display: none; /* Ocultar por defecto */
   
 }
@@ -178,7 +181,7 @@ textarea {
     border-bottom-left-radius: 50px;
     border-top-left-radius: 20px ;
     border-bottom-right-radius: 20px;
-    margin-top: -2rem;
+    margin-top: -0.5rem;
 }
 
 .buttonConfirm{
@@ -199,10 +202,10 @@ textarea {
 }
 
 .buttonexpandir{
-    background-color: var(--color-fifth);
+    background-color: transparent;
     border: solid;
-    border-color: transparent;
-    box-shadow: 0 2px 5px #705C53;
+    border-color: #fafafa82;
+    border-radius: 50px;
 
 }
 
@@ -212,37 +215,37 @@ textarea {
 }
 
 /* Estilos del drag */
-.droppable-area {
-    border: solid;
-    margin-top: 10px;
-    min-height: 400px; /* Altura mínima */
-    min-width: 400px;
-}
-
 .note-container {
     display: grid; /* Cambiar a grid */
+    margin-left: 15px;
     grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-    gap: 10px; /* Espaciado entre notas */
+    gap: 15px; /* Espaciado entre notas */
 }
 
 .note-item {
-    /*background-color: var(--color-primary);*/
+    background-color: transparent;
     padding: 15px;
     width: 15rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
     transition: background-color 0.2s;
     font-size: 12px;
     line-height: 1.4;
-    max-height: 90px; /* Limitar la altura del texto */
+    max-height: 95rem; /* Limitar la altura del texto */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 5; /* Limitar a 4 líneas */
-    line-clamp: 5;
+    -webkit-line-clamp: 3; /*Limitar a 4 líneas */
+    line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 .note-item p{
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 5;
+    -webkit-line-clamp: 6; /* Limitar a 4 líneas */
+    -webkit-box-orient: vertical;
     min-height: none;
 }
 
@@ -292,9 +295,9 @@ textarea {
     border: solid;
     border-color:#eae4ddb2;
 }
-  
-.modal-actions-confirm button {
-    margin: 0 5px;
+
+.modal-actions-confirm {
+    margin-top: 10px;
 }
 
 /*Estilos para el modal que muestra toda la informacion de note*/
@@ -314,10 +317,10 @@ textarea {
   }
   
 .modal-content-info-notes {
-    background-color: var(--color-fifth);
+    background-color: #b6b3b3;
     padding: 20px;
-    border-radius: 8px;
-    width: 300px;
+    border-radius: 10px;
+    width: 25rem;
     text-align: center;
   }
   
@@ -326,7 +329,9 @@ textarea {
   }
   
 .modal-content-info-notes p {
-    overflow-y: auto; /* Permite el desplazamiento vertical */
+    overflow-y: auto; 
+    text-align: justify;
+    height: 15rem;/* Permite el desplazamiento vertical */
     max-height: 300px; /* Ajusta la altura máxima del contenido desplazable */
     padding-right: 10px; /* Añade espacio para evitar superposición del scroll */
     margin-bottom: 20px;

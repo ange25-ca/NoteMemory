@@ -1,4 +1,5 @@
 import React from "react";
+import iconExpandir from '../../assets/visibility.png';
 
 // Interfaz para las props del modal
 interface NoteDetailModalProps {
@@ -16,7 +17,13 @@ const NoteDetailModal: React.FC<NoteDetailModalProps> = ({ title, description, i
       <div className="modal-content-info-notes">
         <h2>{title}</h2>
         <p>{description}</p>
-        <button className="buttonexpandir" onClick={onClose}>Cerrar</button>
+        <button className="buttonexpandir" onClick={onClose}>
+          <img
+            src={iconExpandir}
+            alt="icono de crear nota"
+            style={{ width: '35px', height: '35px' }}
+          />
+          </button>
       </div>
     </div>
   );
