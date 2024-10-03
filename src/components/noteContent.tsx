@@ -102,8 +102,9 @@ const NoteContent: React.FC<NoteContentProps> = ({ title, description, onDelete,
         title={title}
         description={description}
         isOpen={isDetailModalOpen}
-        onClose={handleCloseDetailModal}
-      />
+        onClose={handleCloseDetailModal} 
+        color={color}
+        />
     </div>
   );
 };

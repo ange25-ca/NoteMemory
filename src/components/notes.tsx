@@ -29,7 +29,7 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
 
   // Modal de detalles de nota
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false); // Modal de detalles
-  const [selectedNote, setSelectedNote] = useState<{ title: string; description: string } | null>(null);
+  const [selectedNote, setSelectedNote] = useState<{ title: string; description: string; color:string } | null>(null);
 
   const openConfirmModal = () => setIsConfirmOpen(true);
 
@@ -52,7 +52,7 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
 
   const closeModal = () => setIsModalOpen(false);
 
-  const openDetailModal = (note: { title: string; description: string }) => {
+  const openDetailModal = (note: { title: string; description: string; color: string}) => {
     setIsModalOpen(false); // Asegura que el modal de creación esté cerrado
     setSelectedNote(note);
     setIsDetailModalOpen(true);
@@ -140,6 +140,7 @@ const NoteContainer: React.FC<NoteProps> = ({ notes = [] }) => {
             description={selectedNote.description}
             isOpen={isDetailModalOpen}
             onClose={closeDetailModal}
+            color={selectedNote.color} //Paso el color de la nota
           />
         )}
 
@@ -193,6 +194,7 @@ const SortableNote: React.FC<SortableNoteProps> = ({ id, note, onDelete, onEdit}
     ...note.style,
     transform: transform ? CSS.Transform.toString(transform) : undefined,
     transition,
+    backgroundColor: note.color,
   };
 
   return (

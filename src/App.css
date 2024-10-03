@@ -5,13 +5,13 @@
     text-align: center;
     font-family: "Noto Sans", sans-serif;
     font-weight: 400;
-    --color-navbar: #aea39e99;
+    --color-navbar: #5c5757de;
     --color-background: #EAE4DD;
     --color-info: #FEFBE7;
-    --color-primary: #705C53; 
-    --color-tertiary: #B0A695;
-    --color-forth: #585144;
-    --color-fifth: #7c5f4a;
+    --color-primary: #424141; 
+    --color-tertiary: #60605e;
+    --color-forth: #3b3936;
+    --color-fifth: #353332;
 }
 
 .navbar {
@@ -106,6 +106,7 @@ textarea {
     margin-bottom: 2px;
     border-radius: 15px; 
     cursor: pointer; 
+    color: rgba(255, 255, 255, 0.708);
     outline: none;
     transition: background-color 0.3s; 
 }
@@ -117,7 +118,7 @@ textarea {
     left: 0;
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(2px); /* Aplica el desenfoque al fondo */
+    backdrop-filter: blur(2px); 
     background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro semi-transparente */
     z-index: 1000; /* Debe estar debajo del modal */
 }
@@ -159,12 +160,17 @@ textarea {
   border-radius: 5px;
   height: 10rem;
   position: relative; /* Necesario para el posicionamiento absoluto de los botones */
-  padding: 10px; /* Espaciado interno */
+  padding: 10px; 
   cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
 }
 
+.notecontent h3{
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
 .note-actions {
-  position: absolute; /* Posicionar absolutamente respecto al contenedor de la nota */
+  position: absolute; 
   top: 10px; /* Ajusta según sea necesario */
   margin-left: 10rem;
   display: none; /* Ocultar por defecto */
@@ -202,7 +208,7 @@ textarea {
 }
 
 .buttonexpandir{
-    background-color: transparent;
+    background-color: #0000007b;
     border: solid;
     border-color: #fafafa82;
     border-radius: 50px;
@@ -219,7 +225,7 @@ textarea {
     display: grid; /* Cambiar a grid */
     margin-left: 15px;
     grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-    gap: 15px; /* Espaciado entre notas */
+    gap: 15px;
 }
 
 .note-item {
@@ -234,8 +240,8 @@ textarea {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /*Limitar a 4 líneas */
-    line-clamp: 3;
+    -webkit-line-clamp: 4; /*Limitar a 4 líneas */
+    line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 .note-item p{
@@ -250,12 +256,13 @@ textarea {
 }
 
 .note-item:hover {
-    /*background-color: #6096B4; /* Color al pasar el ratón */
     cursor: move; /* Indicar que se puede mover */
 }
 
 .note-content h3 {
     margin: 0 0 10px;
+    overflow: hidden; /* Oculta el texto que se desborda */
+    text-overflow: ellipsis; /* Muestra "..." al final si hay desbordamiento */
 }
 
 .note-content p {
@@ -265,7 +272,6 @@ textarea {
 .note-content button {
     margin-right: 5px; /* Espaciado entre botones */
     padding: 5px 1px;
-    background-color: #6096B4;
     color: white;
     border-radius: 3px;
     cursor: pointer;
@@ -282,6 +288,9 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;  /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; 
+    text-overflow: ellipsis;
     z-index: 2000;
   }
   
@@ -294,6 +303,18 @@ textarea {
     text-align: center;
     border: solid;
     border-color:#eae4ddb2;
+    white-space: nowrap;  /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.modal-content-info-notes h2{
+  display: -webkit-box; /* Necesario para aplicar line clamping */
+  -webkit-box-orient: vertical; /* Aplica la orientación vertical */
+  -webkit-line-clamp: 2; /* Establece el número de líneas */
+  line-clamp: 2;
+  overflow: hidden; /* Oculta el contenido desbordante */
+  text-overflow: ellipsis; /* Muestra "..." al final del texto truncado */
 }
 
 .modal-actions-confirm {

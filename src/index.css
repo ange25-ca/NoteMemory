@@ -3,8 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
   color: #000;
-  background-color: var(--color-tertiary);
-  --color-tertiary: #d7cfc2;
+  background-color: #B4B4B8;
  
 }
 
@@ -20,19 +19,5 @@ body {
   min-height: 100vh;
 }
 
-/*button {
-  border-radius: 50px;
-  border: 2px solid transparent;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 10px;
-  font-family: "Noto Sans", sans-serif;
-  background-color: var(--color-secondary);
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
 
-button:hover {
-  border-color: var(--color-primary);
-}}*/
 
